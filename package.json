@@ -2,7 +2,7 @@
   "name": "conecta-unb-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
     "start": "nodemon src/server.js",
     "lint": "eslint --ext .js --ext .jsx --fix src/"
