@@ -4,7 +4,11 @@ const config = require('../config/config');
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
 
 const User = sequelize.define('User', {
-  matricula: DataTypes.STRING,
+  matricula: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    primaryKey: true,
+  },
   role: DataTypes.INTEGER,
   nome: DataTypes.STRING,
   email: DataTypes.STRING,

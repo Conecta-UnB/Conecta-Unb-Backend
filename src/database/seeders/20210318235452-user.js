@@ -13,6 +13,8 @@ module.exports = {
         email: 'nome@email.com',
         senha: bcrypt.hashSync('senha', salt),
         role: 0,
+        created_at: new Date(),
+        updated_at: new Date(),
       },
     ], {});
   },

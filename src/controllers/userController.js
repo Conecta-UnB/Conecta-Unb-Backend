@@ -6,13 +6,10 @@ module.exports = {
   async create(request, response) {
     const saltRounds = Number(process.env.SALT_ROUNDS);
 
-    const role = 0;
-    const body = request.body;
     const {
       nome, email, senha, telefone, matricula,
-    } = body;
-    console.log(body);
-
+    } = request.body;
+    const role = 0;
     const salt = bcrypt.genSaltSync(saltRounds);
     const hash = bcrypt.hashSync(senha, salt);
 
