@@ -3,5 +3,6 @@ node_modules
 yarn.lock
 yarn-debug.log*
 yarn-error.log*
-dados
-*dados
+dados/
+*dados/
+tests/coverage
