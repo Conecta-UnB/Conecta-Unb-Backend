@@ -1,3 +1,14 @@
 {
-  "extends": "airbnb-base"
+  "extends": "airbnb-base",
+  "overrides": [
+    {
+      "files": [
+        "**/*.spec.js",
+        "**/*.spec.jsx"
+      ],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
 }
