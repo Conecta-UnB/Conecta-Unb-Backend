@@ -2,6 +2,8 @@
 
 Repositório do Backend da aplicacação ConectaUnb
 
+[![codecov](https://codecov.io/gh/Conecta-UnB/Conecta-Unb-Backend/branch/main/graph/badge.svg?token=IIHCKBXUKM)](https://codecov.io/gh/Conecta-UnB/Conecta-Unb-Backend)
+
 ## Outros repositórios
 
 * [Wiki](https://github.com/Conecta-UnB/Conecta-UnB-Wiki)
