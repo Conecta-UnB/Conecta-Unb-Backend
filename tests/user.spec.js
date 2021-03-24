@@ -2,7 +2,7 @@ const request = require('supertest');
 const app = require('../src/app');
 
 describe('criacao_de_usuario', () => {
-  it('success', async (done) => {
+  it('created successfully', async (done) => {
     const response = await request(app).post('/api/user/create').send({
       nome: 'Julio',
       matricula: '160031233',
@@ -14,7 +14,7 @@ describe('criacao_de_usuario', () => {
     expect(response.body.data.user).toHaveProperty('matricula');
     done();
   });
-  it('fail', async (done) => {
+  it('fails', async (done) => {
     const response = await request(app).post('/api/user/create').send({
       nome: 'Julio',
       matricula: '160031',

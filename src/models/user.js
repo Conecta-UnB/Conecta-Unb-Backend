@@ -5,9 +5,12 @@ let configEnv = '';
 
 if (process.env.NODE_ENV === 'production') {
   configEnv = config.production;
+} else if (process.env.NODE_ENV === 'test') {
+  configEnv = config.test;
 } else {
   configEnv = config.development;
 }
+
 const sequelize = new Sequelize(configEnv.database, configEnv.username,
   configEnv.password, configEnv);
 
