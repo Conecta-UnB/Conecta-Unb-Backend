@@ -1,11 +1,11 @@
 const userRoutes = require('express').Router();
 
 const {
-    celebrate
+  celebrate,
 } = require('celebrate');
 
 const {
-    userValidation
+  userValidation,
 } = require('../validations/userValidations');
 
 const UserController = require('../controllers/userController');
