@@ -10,7 +10,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 const sequelize = new Sequelize(configEnv.database, configEnv.username,
   configEnv.password, configEnv);
-console.log(sequelize);
 
 const User = sequelize.define('users', {
   matricula: {
