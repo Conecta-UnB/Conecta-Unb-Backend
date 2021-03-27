@@ -47,6 +47,43 @@ module.exports = {
     }
   },
 
+  async login(request, response) {
+    const saltRounds = Number(process.env.SALT_ROUNDS);
+
+    const {
+       email, senha
+    } = request.body;
+    const salt = bcrypt.genSaltSync(saltRounds);
+    const hash = bcrypt.hashSync(senha, salt);
+
+    try {
+      const user = await User.findOne({
+        where:{
+          email,
+        }
+      })
+      if(user && bcrypt.compareSync(senha, user.senha)){
+        return response.status(200).json({
+          message: 'login efetuado com sucesso',
+          nome: user.nome,
+          matricula: user.matricula,
+          email: user.email,
+          telefone: user.telefone,
+          role: user.role,
+        })
+      }
+      return response.status(400).json({
+        message: 'usuario e/ou senha incorreta'
+      })
+    }
+    catch (error) {
+      return response.status(500).json({
+        message: 'error',
+        error,
+      });
+    }
+  },
+
   async read(request, response) {
     const { matricula } = request.params;
 
