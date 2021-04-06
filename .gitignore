@@ -13,3 +13,5 @@ dados/
 *dados/
 
 **coverage/
+
+tests/database.sqlite
