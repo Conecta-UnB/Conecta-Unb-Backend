@@ -19,3 +19,15 @@ jobs:
         with:
           git_remote_url: ${{secrets.GIT_REMOTE_URL}}
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+  migrate:
+    name: Migrate
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands to migrate
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        passphrase: ${{ secrets.PASSPHRASE }}
+        script: docker exec -it $(docker ps --filter "name=conecta-unb-back.web.1" -q) /bin/sh -c "yarn sequelize db:migrate:undo:all && yarn sequelize db:migrate && yarn sequelize db:seed:all"
