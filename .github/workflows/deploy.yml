@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 0
 
       - name: Push to dokku
-        uses: dokku/github-action@v1
+        uses: dokku/github-action@master
         with:
           git_remote_url: ${{secrets.GIT_REMOTE_URL}}
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -30,4 +30,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         passphrase: ${{ secrets.PASSPHRASE }}
-        script: docker exec -it $(docker ps --filter "name=conecta-unb-back.web.1" -q) /bin/sh -c "yarn sequelize db:migrate:undo:all && yarn sequelize db:migrate && yarn sequelize db:seed:all"
+        script: docker exec $(docker ps --filter "name=conecta-unb-back.web.1" -q) /bin/sh -c "yarn sequelize db:migrate:undo:all && yarn sequelize db:migrate && yarn sequelize db:seed:all"
