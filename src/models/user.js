@@ -1,9 +1,20 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const config = require('../config/config');
 
-const sequelize = new Sequelize(config.database, config.username, config.password, config);
+let configEnv = '';
 
-const User = sequelize.define('User', {
+if (process.env.NODE_ENV === 'production') {
+  configEnv = config.production;
+} else if (process.env.NODE_ENV === 'test') {
+  configEnv = config.test;
+} else {
+  configEnv = config.development;
+}
+
+const sequelize = new Sequelize(configEnv.database, configEnv.username,
+  configEnv.password, configEnv);
+
+const User = sequelize.define('users', {
   matricula: {
     type: DataTypes.STRING,
     allowNull: false,
