@@ -1,22 +1,10 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const config = require('../config/config');
+const eventRoutes = require('express').Router();
 
-const sequelize = new Sequelize(config.database, config.username, config.password, config);
+const EventController = require('../controllers/eventController');
 
-const User = sequelize.define('Event', {
-  tit: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    primaryKey: true,
-  },
-  role: DataTypes.INTEGER,
-  nome: DataTypes.STRING,
-  email: DataTypes.STRING,
-  senha: DataTypes.STRING,
-  telefone: DataTypes.STRING,
-}, {
-  sequelize,
-  paranoid: true,
-});
+eventRoutes.post('/create', EventController.create);
+eventRoutes.get('/read/:id', EventController.read);
+eventRoutes.put('/update/:id', EventController.update);
+eventRoutes.delete('/delete/:id', EventController.delete);
 
-module.exports = User;
+module.exports = eventRoutes;

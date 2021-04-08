@@ -1,26 +1,27 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class event extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  };
-  event.init({
-    titulo: DataTypes.STRING,
-    descricao: DataTypes.STRING,
-    imagem: DataTypes.STRING,
-    organizador: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'event',
-  });
-  return event;
-};
+const { Sequelize, DataTypes } = require('sequelize');
+const config = require('../config/config');
+
+let configEnv = '';
+
+if (process.env.NODE_ENV === 'production') {
+  configEnv = config.production;
+} else if (process.env.NODE_ENV === 'test') {
+  configEnv = config.test;
+} else {
+  configEnv = config.development;
+}
+
+const sequelize = new Sequelize(configEnv.database, configEnv.username,
+  configEnv.password, configEnv);
+
+const Event = sequelize.define('events', {
+  titulo: DataTypes.STRING,
+  descricao: DataTypes.STRING,
+  imagem: DataTypes.STRING,
+  organizador: DataTypes.STRING,
+}, {
+  sequelize,
+  paranoid: true,
+});
+
+module.exports = Event;
