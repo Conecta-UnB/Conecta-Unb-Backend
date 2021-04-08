@@ -11,7 +11,7 @@ module.exports = {
         nome: 'nome',
         telefone: '61999999999',
         email: 'nome@email.com',
-        senha: bcrypt.hashSync('senha', salt),
+        senha: bcrypt.hashSync('senhasenha', salt),
         role: 0,
         created_at: new Date(),
         updated_at: new Date(),

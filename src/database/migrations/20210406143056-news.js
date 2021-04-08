@@ -9,6 +9,9 @@ module.exports = {
       titulo: {
         type: Sequelize.STRING,
       },
+      imagem: {
+        type: Sequelize.STRING,
+      },
       conteudo: {
         type: Sequelize.STRING,
       },

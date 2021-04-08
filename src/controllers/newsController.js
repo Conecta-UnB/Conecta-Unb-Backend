@@ -9,13 +9,14 @@ module.exports = {
 
     const {
       // eslint-disable-next-line camelcase
-      titulo, conteudo, id_user, autor,
+      titulo, conteudo, id_user, autor, imagem,
     } = request.body;
 
     try {
       const news = await News.create({
         id,
         titulo,
+        imagem,
         conteudo,
         id_user,
         autor,
@@ -29,6 +30,7 @@ module.exports = {
         data: {
           news: {
             titulo: news.titulo,
+            imagem: news.imagem,
             conteudo: news.conteudo,
             id_user: news.id_user,
             autor: news.autor,
