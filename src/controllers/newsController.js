@@ -8,7 +8,6 @@ module.exports = {
     const id = uuidv4();
 
     const {
-      // eslint-disable-next-line camelcase
       titulo, conteudo, id_user, autor, imagem,
     } = request.body;
 

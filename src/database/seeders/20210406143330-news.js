@@ -2,7 +2,7 @@ module.exports = {
   up: async (queryInterface) => {
     await queryInterface.bulkInsert('news', [
       {
-        id: '1',
+        id: '4aa94e41-822c-4db7-9e42-799187f3be76',
         titulo: 'FGA agora tem asfalto',
         imagem: 'Finge que isso é uma imagem do asfalto da FGA',
         conteudo: 'Depois de mais de 10 anos a faculdade do Gama ganha asfalto, chega de chão batido',

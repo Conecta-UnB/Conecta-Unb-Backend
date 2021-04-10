@@ -10,5 +10,8 @@
         "jest": true
       }
     }
-  ]
+  ],
+  "rules": {
+    "camelcase": "off"
+  }
 }
