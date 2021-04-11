@@ -5,7 +5,7 @@ const Event = require('../models/event');
 module.exports = {
   async create(request, response) {
     const {
-      titulo, descricao, imagem, organizador,
+      titulo, descricao, date, organizador,
     } = request.body;
 
     const id = uuidv4();
@@ -15,7 +15,7 @@ module.exports = {
         id,
         titulo,
         descricao,
-        imagem,
+        date,
         organizador,
       });
       if (!event) {
@@ -28,7 +28,7 @@ module.exports = {
           event: {
             titulo: event.titulo,
             descricao: event.descricao,
-            imagem: event.imagem,
+            date: event.date,
             organizador: event.organizador,
           },
         },
@@ -57,7 +57,7 @@ module.exports = {
             titulo: event.titulo,
             organizador: event.organizador,
             descricao: event.descricao,
-            imagem: event.imagem,
+            date: event.date,
           },
         },
         message: 'Evento encontrado com sucesso!',
@@ -73,7 +73,7 @@ module.exports = {
   async update(request, response) {
     const { id } = request.params;
     const {
-      titulo, descricao, organizador, imagem,
+      titulo, descricao, organizador, date,
     } = request.body;
 
     try {
@@ -81,7 +81,7 @@ module.exports = {
         titulo,
         organizador,
         descricao,
-        imagem,
+        date,
       }, {
         where: {
           id,
@@ -96,6 +96,23 @@ module.exports = {
         data: event[0],
         message: 'Evento atualizado com sucesso!',
       });
+    } catch (error) {
+      return response.status(500).json({
+        message: 'error',
+        error,
+      });
+    }
+  },
+
+  async read_all(request, response) {
+    try {
+      const event = await Event.findAll();
+      if (!event) {
+        return response.status(500).json({
+          message: 'Evento não encontrado!',
+        });
+      }
+      return response.status(200).json(event);
     } catch (error) {
       return response.status(500).json({
         message: 'error',

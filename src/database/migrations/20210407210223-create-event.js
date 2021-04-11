@@ -13,8 +13,8 @@ module.exports = {
       descricao: {
         type: Sequelize.STRING,
       },
-      imagem: {
-        type: Sequelize.STRING,
+      date: {
+        type: Sequelize.DATE,
       },
       organizador: {
         type: Sequelize.STRING,

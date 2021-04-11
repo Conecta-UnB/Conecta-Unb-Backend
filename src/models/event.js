@@ -17,7 +17,7 @@ const sequelize = new Sequelize(configEnv.database, configEnv.username,
 const Event = sequelize.define('events', {
   titulo: DataTypes.STRING,
   descricao: DataTypes.STRING,
-  imagem: DataTypes.STRING,
+  date: DataTypes.DATE,
   organizador: DataTypes.STRING,
 }, {
   sequelize,
