@@ -28,6 +28,7 @@ module.exports = {
       return response.status(200).json({
         data: {
           news: {
+            id: news.id,
             titulo: news.titulo,
             imagem: news.imagem,
             conteudo: news.conteudo,
@@ -52,7 +53,7 @@ module.exports = {
       const news = await News.findByPk(id);
       if (!news) {
         return response.status(500).json({
-          message: 'Usuário não encontrado!',
+          message: 'Notícia não encontrado!',
         });
       }
       return response.status(200).json({
@@ -90,7 +91,7 @@ module.exports = {
       }
       return response.status(200).json({
         data: news,
-        message: 'Notícia deletado com sucesso!',
+        message: 'Notícia deletada com sucesso!',
       });
     } catch (error) {
       return response.status(500).json({

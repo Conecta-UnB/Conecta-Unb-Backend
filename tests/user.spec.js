@@ -81,3 +81,24 @@ describe('remocao_de_usuario', () => {
     done();
   });
 });
+
+describe('login', () => {
+  it('success', async (done) => {
+    const response = await request(app).post('/api/user/login').send({
+      email: 'senhorTeste@test.com',
+      senha: 'amoASenhoraTeste',
+    });
+    expect(response.status).toBe(200);
+    expect(response.body.message).toBe('Login efetuado com sucesso!');
+    done();
+  });
+  it('fails', async (done) => {
+    const response = await request(app).post('/api/user/login').send({
+      email: 'nome@email.com',
+      senha: 'senha',
+    });
+    expect(response.status).toBe(400);
+    expect(response.body.message).toBe('usuario e/ou senha incorreta');
+    done();
+  });
+});

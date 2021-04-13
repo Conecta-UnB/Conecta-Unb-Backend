@@ -11,6 +11,16 @@ module.exports = {
         created_at: new Date(),
         updated_at: new Date(),
       },
+      {
+        id: '41fce677-a031-40d6-91d0-9f68bf72e18f',
+        titulo: 'Novo prédio da FGA',
+        imagem: 'Finge que isso é uma imagem do novo prédio',
+        conteudo: 'A FGA ganhou um novo prédio, o prédio possui laboratórios',
+        id_user: '160234845',
+        autor: 'Quem escreveu',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
     ], {});
   },
 

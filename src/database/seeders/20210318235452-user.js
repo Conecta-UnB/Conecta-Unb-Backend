@@ -16,6 +16,16 @@ module.exports = {
         created_at: new Date(),
         updated_at: new Date(),
       },
+      {
+        matricula: '165334345',
+        nome: 'senhorTeste',
+        telefone: '61999999999',
+        email: 'senhorTeste@test.com',
+        senha: bcrypt.hashSync('amoASenhoraTeste', salt),
+        role: 0,
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
     ], {});
   },
 
