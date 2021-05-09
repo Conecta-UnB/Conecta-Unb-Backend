@@ -21,6 +21,7 @@ jobs:
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
   migrate:
     name: Migrate
+    needs: deploy
     runs-on: ubuntu-latest
     steps:
     - name: executing remote ssh commands to migrate
