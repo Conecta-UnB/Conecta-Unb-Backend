@@ -74,6 +74,7 @@ module.exports = {
       }
       return response.status(400).json({
         message: 'usuario e/ou senha incorreta',
+        user,
       });
     } catch (error) {
       return response.status(500).json({
